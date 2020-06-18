@@ -44,9 +44,9 @@ class Index {
 
   inline const float *GetDataset() const { return data_; }
  protected:
-  const size_t dimension_;
-  const float *data_;
-  size_t nd_;
+  const size_t dimension_;//width of vectors
+  const float *data_;//vector data, stored continuous
+  size_t nd_;//num of vectors
   bool has_built;
   Distance* distance_;
 };

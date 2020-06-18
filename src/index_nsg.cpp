@@ -11,12 +11,19 @@
 
 namespace efanna2e {
 #define _CONTROL_NUM 100
+/**
+ * @param dimension : dimension of vector
+ * @param n : num of vectors
+ * @param m : Metric Type of index
+ * @param initializer : useless
+ */
 IndexNSG::IndexNSG(const size_t dimension, const size_t n, Metric m,
                    Index *initializer)
     : Index(dimension, n, m), initializer_{initializer} {}
 
 IndexNSG::~IndexNSG() {}
 
+// save final_graph
 void IndexNSG::Save(const char *filename) {
   std::ofstream out(filename, std::ios::binary | std::ios::out);
   assert(final_graph_.size() == nd_);
@@ -31,6 +38,7 @@ void IndexNSG::Save(const char *filename) {
   out.close();
 }
 
+// load final_graph
 void IndexNSG::Load(const char *filename) {
   std::ifstream in(filename, std::ios::binary);
   in.read((char *)&width, sizeof(unsigned));
@@ -61,7 +69,7 @@ void IndexNSG::Load_nn_graph(const char *filename) {
 
   final_graph_.resize(num);
   final_graph_.reserve(num);
-  unsigned kk = (k + 3) / 4 * 4;
+  unsigned kk = (k + 3) / 4 * 4;// upper bound to the nearest multiple of 4
   for (size_t i = 0; i < num; i++) {
     in.seekg(4, std::ios::cur);
     final_graph_[i].resize(k);
@@ -71,6 +79,16 @@ void IndexNSG::Load_nn_graph(const char *filename) {
   in.close();
 }
 
+/**
+ * start from navigate node, find the nearest L neighbors of query vector
+ * @param query : query vector
+ * @param parameter : provide parameter L which limit size of retset
+ * @param retset : the nearest L neighbors of query vector
+ * @param fullset : all nodes in the search path
+ *
+ * @optimization idea: maintain two heaps, one min heap use to compute, one max heap use to maintain distance goalkeeper.
+ * avoid back trace of k and Neighbor.flag, and cost of insert sort.
+ */
 void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
                              std::vector<Neighbor> &retset,
                              std::vector<Neighbor> &fullset) {
@@ -82,11 +100,13 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
 
   boost::dynamic_bitset<> flags{nd_, 0};
   L = 0;
+  // put entry point's neighbors' id into init_ids
   for (unsigned i = 0; i < init_ids.size() && i < final_graph_[ep_].size(); i++) {
     init_ids[i] = final_graph_[ep_][i];
     flags[init_ids[i]] = true;
     L++;
   }
+  // use random id to fill init_ids up
   while (L < init_ids.size()) {
     unsigned id = rand() % nd_;
     if (flags[id]) continue;
@@ -98,7 +118,7 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
   L = 0;
   for (unsigned i = 0; i < init_ids.size(); i++) {
     unsigned id = init_ids[i];
-    if (id >= nd_) continue;
+    if (id >= nd_) continue; // will this happen?
     // std::cout<<id<<std::endl;
     float dist = distance_->compare(data_ + dimension_ * (size_t)id, query,
                                     (unsigned)dimension_);
@@ -126,19 +146,22 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
         Neighbor nn(id, dist, true);
         fullset.push_back(nn);
         if (dist >= retset[L - 1].distance) continue;
-        int r = InsertIntoPool(retset.data(), L, nn);
+        int r = InsertIntoPool(retset.data(), L, nn); // sort of insert
 
-        if (L + 1 < retset.size()) ++L;
-        if (r < nk) nk = r;
+        if (L + 1 < retset.size()) ++L; // L: valid data size
+        if (r < nk) nk = r; // nk: leftmost insert position
       }
     }
     if (nk <= k)
-      k = nk;
+      k = nk; // back trace of k
     else
       ++k;
   }
 }
 
+/*
+ * almost the same with the function above, only difference is flags is provided as parameter, can be override
+ */
 void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
                              boost::dynamic_bitset<> &flags,
                              std::vector<Neighbor> &retset,
@@ -150,11 +173,13 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
   // initializer_->Search(query, nullptr, L, parameter, init_ids.data());
 
   L = 0;
+  //firstly, chose navigating point's L neighbors as candidate point
   for (unsigned i = 0; i < init_ids.size() && i < final_graph_[ep_].size(); i++) {
     init_ids[i] = final_graph_[ep_][i];
     flags[init_ids[i]] = true;
     L++;
   }
+  // if there is no L neighbors of navigating point, random the rest
   while (L < init_ids.size()) {
     unsigned id = rand() % nd_;
     if (flags[id]) continue;
@@ -164,6 +189,7 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
   }
 
   L = 0;
+  //calculate the candidate point and query point's distance
   for (unsigned i = 0; i < init_ids.size(); i++) {
     unsigned id = init_ids[i];
     if (id >= nd_) continue;
@@ -187,13 +213,13 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
 
       for (unsigned m = 0; m < final_graph_[n].size(); ++m) {
         unsigned id = final_graph_[n][m];
-        if (flags[id]) continue;
+        if (flags[id]) continue;//judge whether id is already in candicate pool
         flags[id] = 1;
 
         float dist = distance_->compare(query, data_ + dimension_ * (size_t)id,
                                         (unsigned)dimension_);
         Neighbor nn(id, dist, true);
-        fullset.push_back(nn);
+        fullset.push_back(nn);// add to candicate pool
         if (dist >= retset[L - 1].distance) continue;
         int r = InsertIntoPool(retset.data(), L, nn);
 
@@ -202,12 +228,15 @@ void IndexNSG::get_neighbors(const float *query, const Parameters &parameter,
       }
     }
     if (nk <= k)
-      k = nk;
+      k = nk;//trace back
     else
       ++k;
   }
 }
 
+/*
+ * calculate navigate node
+ */
 void IndexNSG::init_graph(const Parameters &parameters) {
   float *center = new float[dimension_];
   for (unsigned j = 0; j < dimension_; j++) center[j] = 0;
@@ -229,11 +258,12 @@ void IndexNSG::sync_prune(unsigned q, std::vector<Neighbor> &pool,
                           const Parameters &parameter,
                           boost::dynamic_bitset<> &flags,
                           SimpleNeighbor *cut_graph_) {
-  unsigned range = parameter.Get<unsigned>("R");
-  unsigned maxc = parameter.Get<unsigned>("C");
+  unsigned range = parameter.Get<unsigned>("R"); // max size of result
+  unsigned maxc = parameter.Get<unsigned>("C"); // max num of points to be check in candidate pool
   width = range;
   unsigned start = 0;
 
+  //for point q, put q's all neighbor which not in candidate pool into pool
   for (unsigned nn = 0; nn < final_graph_[q].size(); nn++) {
     unsigned id = final_graph_[q][nn];
     if (flags[id]) continue;
@@ -248,6 +278,7 @@ void IndexNSG::sync_prune(unsigned q, std::vector<Neighbor> &pool,
   if (pool[start].id == q) start++;
   result.push_back(pool[start]);
 
+  //pick the top range nearest point into result, check maxc points
   while (result.size() < range && (++start) < pool.size() && start < maxc) {
     auto &p = pool[start];
     bool occlude = false;
@@ -259,7 +290,7 @@ void IndexNSG::sync_prune(unsigned q, std::vector<Neighbor> &pool,
       float djk = distance_->compare(data_ + dimension_ * (size_t)result[t].id,
                                      data_ + dimension_ * (size_t)p.id,
                                      (unsigned)dimension_);
-      if (djk < p.distance /* dik */) {
+      if (djk < p.distance /* dik */) { // abandon the longest edge in triangle pqt
         occlude = true;
         break;
       }
@@ -368,7 +399,7 @@ void IndexNSG::Link(const Parameters &parameters, SimpleNeighbor *cut_graph_) {
       tmp.clear();
       flags.reset();
       get_neighbors(data_ + dimension_ * n, parameters, flags, tmp, pool);
-      sync_prune(n, pool, parameters, flags, cut_graph_);
+      sync_prune(n, pool, parameters, flags, cut_graph_);//prune the candidate pool
       /*
     cnt++;
     if(cnt % step_size == 0){
@@ -390,11 +421,12 @@ void IndexNSG::Build(size_t n, const float *data, const Parameters &parameters) 
   unsigned range = parameters.Get<unsigned>("R");
   Load_nn_graph(nn_graph_path.c_str());
   data_ = data;
-  init_graph(parameters);
+  init_graph(parameters);// calculate the navigating point, store the id into ep_
   SimpleNeighbor *cut_graph_ = new SimpleNeighbor[nd_ * (size_t)range];
-  Link(parameters, cut_graph_);
+  Link(parameters, cut_graph_);// for each node p, calculate p's nearest neighbor, at most range
   final_graph_.resize(nd_);
 
+  // prune the graph by cut_graph
   for (size_t i = 0; i < nd_; i++) {
     SimpleNeighbor *pool = cut_graph_ + i * (size_t)range;
     unsigned pool_size = 0;
@@ -435,11 +467,13 @@ void IndexNSG::Search(const float *query, const float *x, size_t K,
   // GenRandom(rng, init_ids.data(), L, (unsigned) nd_);
 
   unsigned tmp_l = 0;
+  //pick at most L points of navigating point's neighbor as search start points set
   for (; tmp_l < L && tmp_l < final_graph_[ep_].size(); tmp_l++) {
     init_ids[tmp_l] = final_graph_[ep_][tmp_l];
     flags[init_ids[tmp_l]] = true;
   }
 
+  // supply L init points
   while (tmp_l < L) {
     unsigned id = rand() % nd_;
     if (flags[id]) continue;
@@ -609,7 +643,7 @@ void IndexNSG::DFS(boost::dynamic_bitset<> &flag, unsigned root, unsigned &cnt) 
   if (!flag[root]) cnt++;
   flag[root] = true;
   while (!s.empty()) {
-    unsigned next = nd_ + 1;
+    unsigned next = nd_ + 1;// non-exisits next as the init value
     for (unsigned i = 0; i < final_graph_[tmp].size(); i++) {
       if (flag[final_graph_[tmp][i]] == false) {
         next = final_graph_[tmp][i];
@@ -617,7 +651,7 @@ void IndexNSG::DFS(boost::dynamic_bitset<> &flag, unsigned root, unsigned &cnt) 
       }
     }
     // std::cout << next <<":"<<cnt <<":"<<tmp <<":"<<s.size()<< '\n';
-    if (next == (nd_ + 1)) {
+    if (next == (nd_ + 1)) {// there is no next node, return in recursion way
       s.pop();
       if (s.empty()) break;
       tmp = s.top();

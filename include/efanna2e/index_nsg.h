@@ -44,7 +44,7 @@ class IndexNSG : public Index {
     typedef std::vector<std::vector<unsigned > > CompactGraph;
     typedef std::vector<SimpleNeighbors > LockGraph;
     typedef std::vector<nhood> KNNGraph;
-
+    // nn_graph prebuilt by other algorithm, the quantity of graph will result in the quantity of search result:)
     CompactGraph final_graph_;
 
     Index *initializer_;
@@ -72,7 +72,7 @@ class IndexNSG : public Index {
 
   private:
     unsigned width;
-    unsigned ep_;
+    unsigned ep_;//id of navigating point/enter point
     std::vector<std::mutex> locks;
     char* opt_graph_;
     size_t node_size;

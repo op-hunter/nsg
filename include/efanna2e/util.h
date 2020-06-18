@@ -14,6 +14,12 @@
 #endif
 namespace efanna2e {
 
+    /*
+     * generate a monotonic increasing random array
+     * then add an offset
+     * then mod N
+     * 4 what?
+     */
     static void GenRandom(std::mt19937 &rng, unsigned *addr, unsigned size, unsigned N) {
         for (unsigned i = 0; i < size; ++i) {
             addr[i] = rng() % (N - size);

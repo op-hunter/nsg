@@ -29,7 +29,7 @@ struct Neighbor {
 typedef std::lock_guard<std::mutex> LockGuard;
 struct nhood{
   std::mutex lock;
-  std::vector<Neighbor> pool;
+  std::vector<Neighbor> pool;//pool is maintained as a heap
   unsigned M;
 
   std::vector<unsigned> nn_old;
@@ -48,16 +48,19 @@ struct nhood{
 
   nhood(const nhood &other){
     M = other.M;
-    std::copy(other.nn_new.begin(), other.nn_new.end(), std::back_inserter(nn_new));
-    nn_new.reserve(other.nn_new.capacity());
+    std::copy(other.nn_new.begin(), other.nn_new.end(), std::back_inserter(nn_new)); // append, keep the old space of this.nn_new, so this.nn_new.size() += other.nn_new.size()
+    nn_new.reserve(other.nn_new.capacity()); // only keep the first other.nn_new.capacity() value
     pool.reserve(other.pool.capacity());
   }
+
+  // add a neighbor
   void insert (unsigned id, float dist) {
     LockGuard guard(lock);
     if (dist > pool.front().distance) return;
     for(unsigned i=0; i<pool.size(); i++){
       if(id == pool[i].id)return;
     }
+    //get it
     if(pool.size() < pool.capacity()){
       pool.push_back(Neighbor(id, dist, true));
       std::push_heap(pool.begin(), pool.end());
@@ -99,14 +102,19 @@ struct SimpleNeighbors{
   std::vector<SimpleNeighbor> pool;
 };
 
+// insert a neighbor into pool(length K) and return the position of insertion
+// after this function, pool has K + 1 neighbors
+// if the id of insert element is existed in pool, return K + 1 means invalid insertion
 static inline int InsertIntoPool (Neighbor *addr, unsigned K, Neighbor nn) {
   // find the location to insert
   int left=0,right=K-1;
+  // insert to leftmost position
   if(addr[left].distance>nn.distance){
-    memmove((char *)&addr[left+1], &addr[left],K * sizeof(Neighbor));
+    memmove((char *)&addr[left+1], &addr[left],K * sizeof(Neighbor)); // K + 1 neighbors
     addr[left] = nn;
     return left;
   }
+  // insert to rightmost position
   if(addr[right].distance<nn.distance){
     addr[K] = nn;
     return K;
