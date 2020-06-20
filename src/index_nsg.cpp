@@ -290,7 +290,7 @@ void IndexNSG::sync_prune(unsigned q, std::vector<Neighbor> &pool,
       float djk = distance_->compare(data_ + dimension_ * (size_t)result[t].id,
                                      data_ + dimension_ * (size_t)p.id,
                                      (unsigned)dimension_);
-      if (djk < p.distance /* dik */) { // abandon the longest edge in triangle pqt
+      if (djk < p.distance /* dik */) { // abandon the longest edge in triangle pqt, as same strategy as hnsw
         occlude = true;
         break;
       }
@@ -363,6 +363,7 @@ void IndexNSG::InterInsert(unsigned n, unsigned range,
         for (unsigned t = 0; t < result.size(); t++) {
           des_pool[t] = result[t];
         }
+        // todo: if (result.size() < range)
       }
     } else {
       LockGuard guard(locks[des]);
@@ -443,6 +444,7 @@ void IndexNSG::Build(size_t n, const float *data, const Parameters &parameters) 
 
   tree_grow(parameters);
 
+  // can be done in prune loop above
   unsigned max = 0, min = 1e6, avg = 0;
   for (size_t i = 0; i < nd_; i++) {
     auto size = final_graph_[i].size();
@@ -621,7 +623,7 @@ void IndexNSG::OptimizeGraph(float *data) {  // use after build or load
   DistanceFastL2 *dist_fast = (DistanceFastL2 *)distance_;
   for (unsigned i = 0; i < nd_; i++) {
     char *cur_node_offset = opt_graph_ + i * node_size;
-    float cur_norm = dist_fast->norm(data_ + i * dimension_, dimension_);
+    float cur_norm = dist_fast->norm(data_ + i * dimension_, dimension_); // cur_norm = sigma(xi * xi), 0 <= i < dim
     std::memcpy(cur_node_offset, &cur_norm, sizeof(float));
     std::memcpy(cur_node_offset + sizeof(float), data_ + i * dimension_,
                 data_len - sizeof(float));

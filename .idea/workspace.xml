@@ -16,37 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6abc0479-4cfa-4603-a782-b8650f24ae6f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/deep1b.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/deep1b.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/gauss_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/gauss_graph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/gaussall.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/gaussall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/gist_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/gist_graph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/gistall.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/gistall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/rand_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/rand_graph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/randall.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/randall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/sift_graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/sift_graph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figures/siftall.png" beforeDir="false" afterPath="$PROJECT_DIR$/figures/siftall.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/distance.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/distance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/exceptions.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/exceptions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/index.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/index.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/index_nsg.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/index_nsg.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/neighbor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/neighbor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/parameters.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/parameters.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/efanna2e/util.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/efanna2e/util.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index_nsg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/index_nsg.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_nsg_index.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_nsg_index.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_nsg_optimized_search.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_nsg_optimized_search.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_nsg_search.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_nsg_search.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,7 +38,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="7" />
+          <entry key="cpp" value="9" />
           <entry key="h" value="18" />
           <entry key="txt" value="1" />
         </counts>
@@ -75,30 +46,30 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="25" />
+          <entry key="ObjectiveC" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="3389" />
+          <entry key="cpp" value="3638" />
           <entry key="h" value="1443" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="4832" />
+          <entry key="ObjectiveC" value="5081" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5263859">
+    <splitter split-orientation="horizontal" split-proportion="0.5339806">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/index.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="261">
+                <state relative-caret-position="236">
                   <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
                 </state>
               </provider>
@@ -107,11 +78,29 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/index_nsg.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="907">
-                  <caret line="317" column="30" selection-start-line="317" selection-start-column="30" selection-end-line="317" selection-end-column="30" />
+                <state relative-caret-position="222">
+                  <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#31#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/test_nsg_search.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1015">
+                  <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/test_nsg_index.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="96">
+                  <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
@@ -123,22 +112,23 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/efanna2e/distance.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="487">
-                  <caret line="293" column="29" selection-start-line="293" selection-start-column="29" selection-end-line="293" selection-end-column="29" />
+                <state relative-caret-position="349">
+                  <caret line="322" column="3" selection-start-line="322" selection-start-column="3" selection-end-line="322" selection-end-column="3" />
                   <folding>
                     <element signature="e#95#117#0" expanded="true" />
                     <element signature="e#1597#3425#0" expanded="true" />
                     <element signature="e#4637#6448#0" expanded="true" />
+                    <element signature="e#7416#8905#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/include/efanna2e/index_nsg.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+                <state relative-caret-position="-749">
+                  <caret line="43" column="55" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
                   <folding>
                     <element signature="e#59#76#0" expanded="true" />
                   </folding>
@@ -146,11 +136,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/include/efanna2e/neighbor.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="865">
-                  <caret line="121" column="21" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
+                <state relative-caret-position="63">
+                  <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
                   <folding>
                     <element signature="e#172#190#0" expanded="true" />
                     <element signature="e#1809#1821#0" expanded="true" />
@@ -163,7 +153,7 @@
             <entry file="file://$PROJECT_DIR$/include/efanna2e/parameters.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="313">
-                  <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+                  <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
                   <folding>
                     <element signature="e#182#206#0" expanded="true" />
                     <element signature="e#1097#1117#0" expanded="true" />
@@ -199,15 +189,20 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>InsertIntoPool</find>
       <find>data_</find>
       <find>parallel</find>
       <find>openmp</find>
       <find>OpenMP_C_FLAGS</find>
       <find>++</find>
-      <find>GenRandom</find>
       <find>LockGraph</find>
       <find>initializer_</find>
+      <find>nnd_graph</find>
+      <find>GenRandom</find>
+      <find>SearchWithOptGraph</find>
+      <find>OptimizeGraph</find>
+      <find>findroot</find>
+      <find>tree_grow</find>
+      <find>InsertIntoPool</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,9 +226,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="37" />
-    <option name="width" value="3840" />
-    <option name="height" value="2089" />
+    <option name="x" value="3840" />
+    <option name="y" value="921" />
+    <option name="width" value="2560" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -247,22 +243,6 @@
             <path>
               <item name="efanna2e" type="b2602c69:ProjectViewProjectNode" />
               <item name="nsg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="efanna2e" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nsg" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="efanna2e" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nsg" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="efanna2e" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="efanna2e" type="b2602c69:ProjectViewProjectNode" />
-              <item name="nsg" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="efanna2e" type="b2602c69:ProjectViewProjectNode" />
@@ -345,18 +325,18 @@
       <option name="presentableId" value="Default" />
       <updated>1574994474135</updated>
       <workItem from="1574994475369" duration="47413000" />
-      <workItem from="1592395246700" duration="33331000" />
+      <workItem from="1592395246700" duration="49844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80744000" />
+    <option name="totallyTimeSpent" value="97257000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="37" width="3840" height="2089" extended-state="6" />
+    <frame x="3840" y="921" width="2560" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.17004265" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.0894013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -391,20 +371,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_nsg_index.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1682">
-          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_nsg_search.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1595">
-          <caret line="77" column="57" selection-start-line="77" selection-start-column="57" selection-end-line="77" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/efanna2e/exceptions.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
@@ -422,33 +388,10 @@
     <entry file="file://$PROJECT_DIR$/include/efanna2e/parameters.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
           <folding>
             <element signature="e#182#206#0" expanded="true" />
             <element signature="e#1097#1117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/efanna2e/distance.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="293" column="29" selection-start-line="293" selection-start-column="29" selection-end-line="293" selection-end-column="29" />
-          <folding>
-            <element signature="e#95#117#0" expanded="true" />
-            <element signature="e#1597#3425#0" expanded="true" />
-            <element signature="e#4637#6448#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/efanna2e/neighbor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="121" column="21" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
-          <folding>
-            <element signature="e#172#190#0" expanded="true" />
-            <element signature="e#1809#1821#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -463,17 +406,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/include/efanna2e/distance.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="322" column="3" selection-start-line="322" selection-start-column="3" selection-end-line="322" selection-end-column="3" />
+          <folding>
+            <element signature="e#95#117#0" expanded="true" />
+            <element signature="e#1597#3425#0" expanded="true" />
+            <element signature="e#4637#6448#0" expanded="true" />
+            <element signature="e#7416#8905#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_nsg_search.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1015">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_nsg_index.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
+        <state relative-caret-position="236">
           <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/efanna2e/index_nsg.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="-749">
+          <caret line="43" column="55" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
           <folding>
             <element signature="e#59#76#0" expanded="true" />
           </folding>
@@ -482,10 +452,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index_nsg.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="317" column="30" selection-start-line="317" selection-start-column="30" selection-end-line="317" selection-end-column="30" />
+        <state relative-caret-position="222">
+          <caret line="183" column="30" selection-start-line="183" selection-start-column="30" selection-end-line="183" selection-end-column="30" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/efanna2e/neighbor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="128" column="18" selection-start-line="128" selection-start-column="18" selection-end-line="128" selection-end-column="18" />
+          <folding>
+            <element signature="e#172#190#0" expanded="true" />
+            <element signature="e#1809#1821#0" expanded="true" />
           </folding>
         </state>
       </provider>
